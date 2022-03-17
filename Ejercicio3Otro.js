@@ -33,35 +33,33 @@ for(let i=0; i<50; i++){
  }
 
 
- function  clasificarAlimentos(alimentos,callback)
+ function  clasificarAlimentos(alimentos,callback){
+
+  setTimeout(function(){
+    
+    const filtrarAlimentos = comidas.filter(function(comida){
+
+        return(comida.tipos=="vegetal" && comida.nivelEnergiaAlimento>=200 )
+
+    })
+       
+  console.log(filtrarAlimentos)
+   
+
+    callback(filtrarAlimentos)
+   
+},5000)
+ }
  
 
-    setTimeout(function(){
-    
-        const filtrarAlimentos = comidas.filter(function(comida){
-
-            return(comida.tipos=="vegetal" && comida.nivelEnergiaAlimento>=200 )
-
-        })
-           
-      console.log(filtrarAlimentos)
-       
-    
-        callback(filtrarAlimentos)
-       
-    },5000)
 
 
 
     clasificarAlimentos(comidas,function(filtrarAlimentos){
-
+      acomulador=0
         comidas.forEach(function(filtrarAlimentos){
-            if(comida.tipos == 'vegetal' && comida.nivelEnergiaAlimento >= 200){
-              comidas = filtrarAlimentos + comida.nivelEnergiaAlimento
-                console.log(comida.alimentos);
-      
-            }
-          });
-          console.log(`la sumatoria de los niveles de energia son ${filtrarAlimentos}`)
+          acomulador=acomulador + filtrarAlimentos.nivelEnergiaAlimento
+          })
+          console.log(`la sumatoria de los niveles de energia son ${acomulador}`)
 
     })
