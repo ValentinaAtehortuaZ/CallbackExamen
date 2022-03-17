@@ -14,7 +14,7 @@ callback debe permitir entregar la sumatoria de niveles de
 energía entregados por los alimentos vegetales consumidos en
 la dieta de Grogu.*/
 
-let alimentos=["maiz","carne","papas","pera","coco","huevo","carne"]
+let alimentos=["maiz","carne","papas","pera","coco","huevo","carne","cucaracha"]
 let tipos=["vegetal","animal","insecto"]
 //let nivelEnergiaAlimento=[200,400,500,100,120]
 
@@ -33,29 +33,35 @@ for(let i=0; i<50; i++){
  }
 
 
- function  clasificarAlimentos(comidas,callback){
-  let sumatoriasEnergiaAlimentos=0
+ function  clasificarAlimentos(alimentos,callback)
+ 
 
-  setTimeout(function(){
+    setTimeout(function(){
+    
+        const filtrarAlimentos = comidas.filter(function(comida){
 
-    comidas.forEach(function(comida){
-      if(comida.tipos == 'vegetal' && comida.nivelEnergiaAlimento >= 200){
-        sumatoriasEnergiaAlimentos = sumatoriasEnergiaAlimentos + comida.nivelEnergiaAlimento
-          console.log(comida.alimentos);
+            return(comida.tipos=="vegetal" && comida.nivelEnergiaAlimento>=200 )
 
-      }
-    });
-
-    console.log(sumatoriasEnergiaAlimentos)
+        })
+           
+      console.log(filtrarAlimentos)
        
     
-      callback(sumatoriasEnergiaAlimentos)
+        callback(filtrarAlimentos)
+       
+    },5000)
 
-  },5000)
 
-  
-}
 
-clasificarAlimentos(comidas,function(sumatoriasEnergiaAlimentos){
-  console.log(`la sumatoria de los niveles de energia son ${sumatoriasEnergiaAlimentos}`)
-})
+    clasificarAlimentos(comidas,function(filtrarAlimentos){
+
+        comidas.forEach(function(filtrarAlimentos){
+            if(comida.tipos == 'vegetal' && comida.nivelEnergiaAlimento >= 200){
+              comidas = filtrarAlimentos + comida.nivelEnergiaAlimento
+                console.log(comida.alimentos);
+      
+            }
+          });
+          console.log(`la sumatoria de los niveles de energia son ${filtrarAlimentos}`)
+
+    })
